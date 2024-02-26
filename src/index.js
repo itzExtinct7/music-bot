@@ -1,5 +1,5 @@
 require('dotenv').config();
-
+const keepAlive = require(`./server`);
 const {Client, GatewayIntentBits} = require('discord.js');
 const {Player} = require('discord-player');
 const {BridgeProvider, BridgeSource} = require('@discord-player/extractor');
@@ -34,5 +34,6 @@ client.player.events.on('playerStart', (queue, track) => {
     console.log(`Started playing ${track.title}`)
 });
 eventHandler(client);
+keepAlive();
 
 client.login(process.env.TOKEN);
